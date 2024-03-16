@@ -2,10 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Hero } from '../../interfaces/hero.interface';
 
 @Pipe({
-  name: 'orderBy',
+  name: 'sortBy',
 })
 export class SortbyPipe implements PipeTransform {
-  transform(heroes: Hero[], sortBy: keyof Hero | null | undefined): Hero[] {
+  transform(heroes: Hero[], sortBy?: keyof Hero | ''): Hero[] {
+    console.log({ heroes, sortBy });
     switch (sortBy) {
       case 'name':
         return heroes.sort((a, b) => a.name.localeCompare(b.name));
